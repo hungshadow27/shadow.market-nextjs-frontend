@@ -57,7 +57,12 @@ const ListChat = () => {
           async (userId) => {
             const userRes = await axios.get(`${API_URL}/api/users`, {
               headers: { Authorization: `Bearer ${token}` },
-              params: { "filters[documentId][$eq]": userId },
+              params: {
+                "filters[documentId][$eq]": userId,
+                populate: {
+                  avatar: true,
+                },
+              },
             });
 
             if (userRes.data && userRes.data.length > 0) {

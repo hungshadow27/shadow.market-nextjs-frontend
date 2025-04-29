@@ -49,6 +49,9 @@ export default function Chat() {
           },
           params: {
             "filters[documentId][$eq]": userId,
+            populate: {
+              avatar: true,
+            },
           },
         });
 
